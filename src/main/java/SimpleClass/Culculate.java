@@ -1,7 +1,7 @@
 package SimpleClass;
+import  WorkClass.*;
 
-import SimpleClass.Time;
 
 public interface Culculate {
-    public double culculate(String name, Double number, Time time);
+    public double culculate(Currency currency);
 }

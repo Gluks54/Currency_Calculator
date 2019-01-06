@@ -1,14 +1,38 @@
 package SimpleClass;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
-
 public class Currency {
 
-    String code;
+
     String ask;
     String currency;
     String bid;
+    double number;
+    String code;
+
+    public void setAsk(String ask) {
+        this.ask = ask;
+    }
+
+    public void setCurrency(String currency) {
+        this.currency = currency;
+    }
+
+    public void setBid(String bid) {
+        this.bid = bid;
+    }
+
+    public void setNumber(double number) {
+        this.number = number;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+
+
+    public double getNumber() {
+        return number;
+    }
 
     public String getCode() {
         return code;
@@ -25,8 +49,13 @@ public class Currency {
     public String getBid() {
         return bid;
     }
-//    Double EUR = 0.0;
-//    Double GPB = 0.0;
-//    Double CHF = 0.0;
+
+
+    public Currency(double number, String code) {
+        this.number = number;
+        this.code = code;
+    }
+
+
 
 }
