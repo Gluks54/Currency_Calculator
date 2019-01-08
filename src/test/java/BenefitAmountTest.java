@@ -1,6 +1,7 @@
 import SimpleClass.Currency;
 import WorkClass.BenefitAmount;
 import WorkClass.Time;
+import com.mashape.unirest.http.exceptions.UnirestException;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -21,7 +22,7 @@ public class BenefitAmountTest {
     }
 
     @Test
-    public void testCorrectBenefitAmount(){
+    public void testCorrectBenefitAmount() throws UnirestException {
         Currency currency = new Currency(100.0,"USD");
         benefitAmount.setStartNumber(3.7);
         benefitAmount.setEndNumber(3.8);

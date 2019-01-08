@@ -5,12 +5,16 @@ import java.util.regex.Pattern;
 
 public class Currency {
 
+    public Currency() {
+    }
 
-    String ask;
-    String currency;
-    String bid;
-    double number;
-    String code;
+    public String ask;
+    public String currency;
+    public String bid;
+    public double number;
+    public String code;
+    public String no;
+    String effectiveDate;
 
     public void setAsk(String ask) {
         this.ask = ask;
