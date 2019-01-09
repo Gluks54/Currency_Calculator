@@ -18,15 +18,21 @@ public class BenefitAmountTest {
     public void setUp(){
         benefitAmount = new BenefitAmount();
         time = new Time("2018-12-12","2018-12-24");
-
     }
 
     @Test
     public void testCorrectBenefitAmount() throws UnirestException {
         Currency currency = new Currency(100.0,"USD");
-        benefitAmount.setStartNumber(3.7);
-        benefitAmount.setEndNumber(3.8);
-        double expected = 0.1;
+        Time time = new Time("2018-12-12","2018-12-15");
+        double expected = 8.36;
+        double actual = benefitAmount.culculate(currency,time);
+        assertEquals(expected,actual);
+    }
+    @Test
+    public void testNullBenefitAmount() throws UnirestException {
+        Currency currency = new Currency(100.0,"USD");
+        Time time = new Time("2019-01-05","2019-01-05");
+        double expected = 0.0;
         double actual = benefitAmount.culculate(currency,time);
         assertEquals(expected,actual);
     }

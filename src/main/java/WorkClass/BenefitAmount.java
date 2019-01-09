@@ -1,14 +1,10 @@
 package WorkClass;
-
-import SimpleClass.Culculate;
 import SimpleClass.Currency;
 import com.google.gson.Gson;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
-import com.mashape.unirest.request.GetRequest;
 import org.json.JSONArray;
-import org.json.JSONObject;
-
+import java.text.DecimalFormat;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -20,7 +16,6 @@ public class BenefitAmount  {
     public void startTableAsk(double startNumber) {
         this.startTableAsk = startNumber;
     }
-
     public void endTableBit(double endNumber) {
         this.endTableBit = endNumber;
     }
@@ -44,7 +39,6 @@ public class BenefitAmount  {
 
             return 0.0;
         }
-
 
         JSONArray ShowResponce = Unirest.get(urlWithData)
                 .asJson()
@@ -77,23 +71,13 @@ public class BenefitAmount  {
             if (i == (tableLength - 1)) {
                 endCurrency = gson.fromJson(responce, Currency.class);
             }
-
-            System.out.println(responce);
         }
             startTableAsk = Double.parseDouble(startCurrency.ask);
             endTableBit = Double.parseDouble(endCurrency.bid);
 
-            System.out.println((startTableAsk - endTableBit) * currency.number);
             double rezult = (startTableAsk - endTableBit) * currency.number;
+            DecimalFormat patter = new DecimalFormat("#.####");
 
-            return rezult;
-
+        return  Double.valueOf(patter.format(rezult));
     }
-    public static void main(String[] args) throws UnirestException {
-       BenefitAmount benefitAmount = new BenefitAmount();
-       Time time = new Time("2019-01-05","2019-01-05");
-       Currency currency = new Currency(100.0,"USD");
-       benefitAmount.culculate(currency,time);
-    }
-
 }
