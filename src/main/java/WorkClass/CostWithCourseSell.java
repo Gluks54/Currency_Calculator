@@ -1,21 +1,19 @@
 package WorkClass;
-
-import SimpleClass.Culculate;
 import SimpleClass.Currency;
-
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 
-public class CostWithCourseSell implements Culculate {
-    @Override
-    public double culculate(Currency currency) {
-        //"bid":3.7448,"ask":3.8204}
-        double doubleAsk = Double.parseDouble(currency.getAsk());
-        double doubCode = currency.getNumber();
-        double rezult = doubleAsk * doubCode;
-        NumberFormat formatter = new DecimalFormat("#0.000");
+public class CostWithCourseSell  {
 
-        //System.out.println(Double.parseDouble(formatter.format(rezult)));
+    public double culculate(Currency currency,double number) {
+
+        if(number < 0){
+            throw  new IllegalArgumentException();
+        }
+        double doubleAsk = Double.parseDouble(currency.getAsk());
+        double rezult = doubleAsk * number;
+
+        NumberFormat formatter = new DecimalFormat("#0.000");
         return Double.parseDouble(formatter.format(rezult));
     }
 }

@@ -1,5 +1,4 @@
 package SimpleClass;
-
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -13,52 +12,27 @@ public class Currency {
     public String bid;
     public double number;
     public String code;
-    public String no;
-    String effectiveDate;
-
-    public void setAsk(String ask) {
-        this.ask = ask;
-    }
+    public String mid;
 
     public void setCurrency(String currency) {
         this.currency = currency;
     }
 
-    public void setBid(String bid) {
-        this.bid = bid;
-    }
-
-    public void setNumber(double number) {
-        this.number = number;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-
-
     public double getNumber() {
         return number;
     }
-
     public String getCode() {
         return code;
     }
-
     public String getAsk() {
         return ask;
     }
-
     public String getCurrency() {
         return currency;
     }
-
     public String getBid() {
         return bid;
     }
-
-
 
     public Currency(double number, String code) {
         this.number = number;
@@ -69,7 +43,4 @@ public class Currency {
             throw new IllegalArgumentException();
         }
     }
-
-
-
 }

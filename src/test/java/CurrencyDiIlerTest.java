@@ -1,20 +1,16 @@
-import SimpleClass.Currency;
-import WorkClass.CurrencyDiIler;
+import WorkClass.CurrencyDeliver;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mockito;
-
 import static junit.framework.TestCase.assertTrue;
 import static junit.framework.TestCase.fail;
-import static org.mockito.Mockito.when;
 
 public class CurrencyDiIlerTest {
-    CurrencyDiIler currencyDiIler;
+    CurrencyDeliver currencyDiIler;
 
     @Before
     public void setUp(){
-        currencyDiIler = new CurrencyDiIler();
+        currencyDiIler = new CurrencyDeliver();
     }
 
     @Test
@@ -35,6 +31,4 @@ public class CurrencyDiIlerTest {
             fail();
         }catch (IllegalArgumentException e){assertTrue(true);}
     }
-
-
 }
