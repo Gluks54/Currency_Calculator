@@ -1,18 +1,20 @@
-package WorkClass;
-import SimpleClass.Currency;
+package com.pl.currency_calculator.WorkClass;
+
 import com.google.gson.Gson;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
+import com.pl.currency_calculator.SimpleClass.Currency;
+
 import java.text.DecimalFormat;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class BenefitAmount  {
+public class BenefitAmount {
 
-    double startTableAsk;
-    double endTableBit;
+    private double startTableAsk;
+    private double endTableBit;
 
-    public double culculate(String cod, Time time,double number) throws UnirestException {
+    public double culculate(String cod, Time time, double number) throws UnirestException {
 
         String urlWithData = String
                 .format("http://api.nbp.pl/api/exchangerates/" +
@@ -28,7 +30,7 @@ public class BenefitAmount  {
         Pattern pattern = Pattern.compile("404 NotFound - Not Found - Brak danych");
         Matcher matcher = pattern.matcher(errorResponce);
 
-        if(matcher.find()){
+        if (matcher.find()) {
             return 0.0;
         }
 
@@ -57,12 +59,12 @@ public class BenefitAmount  {
                 endCurrency = gson.fromJson(responce, Currency.class);
             }
         }
-            startTableAsk = Double.parseDouble(startCurrency.ask);
-            endTableBit = Double.parseDouble(endCurrency.bid);
+        startTableAsk = Double.parseDouble(startCurrency.getAsk());
+        endTableBit = Double.parseDouble(endCurrency.getBid());
 
-            double rezult = (startTableAsk - endTableBit) * number;
-            DecimalFormat patter = new DecimalFormat("#.####");
+        double rezult = (startTableAsk - endTableBit) * number;
+        DecimalFormat patter = new DecimalFormat("#.####");
 
-        return  Double.valueOf(patter.format(rezult));
+        return Double.valueOf(patter.format(rezult));
     }
 }

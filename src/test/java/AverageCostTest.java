@@ -1,42 +1,41 @@
-import SimpleClass.Currency;
-import WorkClass.AverageCost;
 import com.mashape.unirest.http.exceptions.UnirestException;
+import com.pl.currency_calculator.SimpleClass.Currency;
+import com.pl.currency_calculator.WorkClass.AverageCost;
 import junitparams.JUnitParamsRunner;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mockito;
-import static junit.framework.TestCase.assertEquals;
+
 import static junit.framework.TestCase.assertTrue;
 import static junit.framework.TestCase.fail;
-import static org.mockito.Mockito.when;
 
 @RunWith(JUnitParamsRunner.class)
 public class AverageCostTest {
 
     AverageCost averageCost;
+
     @Before
-    public void SetUp(){
+    public void SetUp() {
         averageCost = new AverageCost();
     }
 
     @Test
     public void testUnCorDataAverageCost() throws UnirestException {
-        try{
-            averageCost.getAverageCost("USD",-1.0);
+        try {
+            averageCost.getAverageCost("USD", -1.0);
             fail();
-        }catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             assertTrue(true);
         }
     }
 
     @Test
     public void testIllegalArgumentAveregeCost() throws UnirestException {
-        try{
+        try {
             Currency currency = new Currency();
-            averageCost.getAverageCost("USDd",100.0);
+            averageCost.getAverageCost("USDd", 100.0);
             fail();
-        }catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             assertTrue(true);
         }
     }

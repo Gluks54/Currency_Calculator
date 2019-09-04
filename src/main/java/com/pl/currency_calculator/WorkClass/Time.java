@@ -1,4 +1,5 @@
-package WorkClass;
+package com.pl.currency_calculator.WorkClass;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -12,7 +13,7 @@ public class Time {
         Matcher matcherStart = pattern.matcher(startDate);
         Matcher matcherEnd = pattern.matcher(endDate);
 
-        if(!matcherEnd.find() || !matcherStart.find()){
+        if (!matcherEnd.find() || !matcherStart.find()) {
             throw new IllegalArgumentException();
         }
         this.startDate = startDate;
